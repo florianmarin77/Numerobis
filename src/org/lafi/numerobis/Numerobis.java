@@ -182,7 +182,6 @@ public class Numerobis {
 
         int min = 0;
         int max = 0;
-
         for (int count = 0; count < 9; count++) {
             if (spu[count] < min) {
                 min = spu[count];
@@ -191,8 +190,10 @@ public class Numerobis {
                 max = spu[count];
             }
         }
+
+        System.out.println("******************");
         boolean empty;
-        for (int level = max; (level <= max) && (level >= min); level--) {
+        for (int level = max; (level >= min); level--) {
             empty = true;
             for (int item = 0; item < 9; item++) {
                 if (level == spu[item]) {
@@ -227,7 +228,7 @@ public class Numerobis {
                         }
                         break;
                         case 8: {
-                            System.out.println("D");
+                            System.out.print("D");
                         }
                         break;
                         case 9: {
@@ -246,5 +247,82 @@ public class Numerobis {
             }
             System.out.println();
         }
+        System.out.println("******************");
+
+
+        boolean[] isItemActive = {false, false, false, false, false, false, false, false, false};
+        for (int level = max; (level <= max) && (level >= min); level--) {
+            for (int item = 0; item < 9; item++) {
+
+                // display basic diagram
+                if (level == spu[item]) {
+                    switch (item + 1) {
+                        case 1: {
+                            System.out.print("A");
+                            isItemActive[0] = true;
+                        }
+                        break;
+                        case 2: {
+                            System.out.print("R");
+                            isItemActive[1] = true;
+                        }
+                        break;
+                        case 3: {
+                            System.out.print("I");
+                            isItemActive[2] = true;
+                        }
+                        break;
+                        case 4: {
+                            System.out.print("M");
+                            isItemActive[3] = true;
+                        }
+                        break;
+                        case 5: {
+                            System.out.print("E");
+                            isItemActive[4] = true;
+                        }
+                        break;
+                        case 6: {
+                            System.out.print("V");
+                            isItemActive[5] = true;
+                        }
+                        break;
+                        case 7: {
+                            System.out.print("P");
+                            isItemActive[6] = true;
+                        }
+                        break;
+                        case 8: {
+                            System.out.print("D");
+                            isItemActive[7] = true;
+                        }
+                        break;
+                        case 9: {
+                            System.out.print("G");
+                            isItemActive[8] = true;
+                        }
+                        break;
+                        default: {
+                            System.out.println("CRITICAL ERROR");
+                        }
+                        break;
+                    }
+                } else if (isItemActive[item] == true) {
+                    System.out.print("|");
+                } else {
+                    System.out.print(" ");
+                }
+
+                // optimized diagram display
+                if (isItemActive[item] == true) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print(" ");
+                }
+
+            }
+            System.out.println();
+        }
+        System.out.println("------------------");
     }
 }
