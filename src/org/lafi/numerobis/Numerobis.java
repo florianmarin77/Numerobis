@@ -12,7 +12,8 @@ public class Numerobis {
         String lastName = keyboard.nextLine();
         keyboard.close();
         String name = firstName + lastName;
-        System.out.println("Your name is " + firstName + " " + lastName);
+        System.out.println();
+        System.out.println(firstName.toUpperCase() + " " + lastName.toUpperCase());
 
         int a = 0;
         int b = 0;
@@ -174,7 +175,76 @@ public class Numerobis {
         String string8 = string0 + item8;
         String string9 = string0 + item9;
 
+        int[] spu = {item1, item2, item3, item4, item5, item6, item7, item8, item9};
+
         System.out.println("ARIMEVPDG");
         System.out.println(string1 + string2 + string3 + string4 + string5 + string6 + string7 + string8 + string9);
+
+        int min = 0;
+        int max = 0;
+
+        for (int count = 0; count < 9; count++) {
+            if (spu[count] < min) {
+                min = spu[count];
+            }
+            if (spu[count] > max) {
+                max = spu[count];
+            }
+        }
+        boolean empty;
+        for (int level = max; (level <= max) && (level >= min); level--) {
+            empty = true;
+            for (int item = 0; item < 9; item++) {
+                if (level == spu[item]) {
+                    empty = false;
+                    switch (item + 1) {
+                        case 1: {
+                            System.out.print("A");
+                        }
+                        break;
+                        case 2: {
+                            System.out.print("R");
+                        }
+                        break;
+                        case 3: {
+                            System.out.print("I");
+                        }
+                        break;
+                        case 4: {
+                            System.out.print("M");
+                        }
+                        break;
+                        case 5: {
+                            System.out.print("E");
+                        }
+                        break;
+                        case 6: {
+                            System.out.print("V");
+                        }
+                        break;
+                        case 7: {
+                            System.out.print("P");
+                        }
+                        break;
+                        case 8: {
+                            System.out.println("D");
+                        }
+                        break;
+                        case 9: {
+                            System.out.print("G");
+                        }
+                        break;
+                        default: {
+                            System.out.println("CRITICAL ERROR");
+                        }
+                        break;
+                    }
+                }
+            }
+            if (empty == true) {
+                System.out.print("-------");
+            }
+            System.out.println();
+        }
     }
 }
